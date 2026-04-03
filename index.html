@@ -8,10 +8,6 @@
       name="description"
       content="MaxCINE — A professional imaging brand focused on premium drone filters, cinema accessories and brand peripherals, engineered for precision imaging."
     />
-
-    <!-- base 必须放在 head 内，所有相对路径都基于它 -->
-    <base href="/MaxCINE/" />
-
     <!-- favicon -->
     <link rel="icon" href="assets/favicon.ico" />
 
@@ -47,9 +43,9 @@
         <div class="mc-hero-content">
           <p class="mc-hero-kicker" data-i18n="hero.kicker">专业级航拍无人机增广镜</p>
           <h1 id="hero-title" class="mc-hero-title" data-i18n="hero.title">视界尽展</h1>
-          <p class="mc-hero-subtitle" data-i18n="hero.subtitle">适用MAVIC 4 Pro 增广镜</p>
-          <a href="#featured" class="mc-btn mc-btn-outline" data-i18n="hero.cta">
-            了解更多 / Learn More
+          <p class="mc-hero-subtitle" data-i18n="hero.subtitle">适用于DJI MAVIC 4 Pro</p>
+          <a href="#featured" class="mc-btn mc-btn-outline mc-btn-pill" data-i18n="hero.cta">
+            了解更多 / LEARN MORE
           </a>
         </div>
       </section>
@@ -141,38 +137,28 @@
         </div>
       </section>
 
-      <!-- Support -->
-      <section id="support" class="mc-section mc-section--black mc-section--padded">
-        <div class="mc-section-inner">
-          <div class="mc-section-header">
-            <h2 class="mc-section-title" data-i18n="support.title">支持与服务</h2>
-            <p class="mc-section-body" data-i18n="support.body">
-              面向专业团队的结构化支持，覆盖设备全生命周期。
-            </p>
-          </div>
-          <div class="mc-support-grid">
-            <article class="mc-support-card mc-support-card--clickable" data-support="warranty">
-              <h3 data-i18n="support.warranty.title">保修查询</h3>
-              <p data-i18n="support.warranty.body">
-                通过序列号快速验证产品保修状态，规划项目周期内的设备使用与备份策略。
-              </p>
-            </article>
-            <article class="mc-support-card">
-              <h3 data-i18n="support.downloads.title">下载中心</h3>
-              <p data-i18n="support.downloads.body">
-                获取产品说明书、安装指南与 LUT / 配色建议，为片场团队建立统一的技术基线。
-              </p>
-            </article>
-            <article class="mc-support-card">
-              <h3 data-i18n="support.contact.title">联系团队</h3>
-              <p data-i18n="support.contact.body">
-                直连 MaxCINE 专业支持团队，针对项目需求获得配套方案建议。
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <div class="mc-support-grid">
 
+  <!-- 保修查询 -->
+  <article class="mc-support-card mc-support-card--clickable" data-support="warranty">
+    <h3 data-i18n="support.warranty.title">保修查询</h3>
+    <p data-i18n="support.warranty.body">
+      通过序列号快速验证产品保修状态，规划项目周期内的设备使用与备份策略。
+    </p>
+  </article>
+
+  <!-- 下载中心 -->
+  <article class="mc-support-card mc-support-card--clickable" onclick="location.href='./downloads/'">
+    <h3 data-i18n="support.downloads.title">下载中心</h3>
+    <p data-i18n="support.downloads.body">
+      获取产品说明书、安装指南与 LUT / 配色建议，为片场团队建立统一的技术基线。
+    </p>
+  </article>
+
+  <a href="./support/" class="mc-support-card mc-support-card--clickable">
+  <h3>联系技术顾问</h3>
+  <p>获取一对一技术支持与售后服务</p>
+</a>
       <!-- Purchase anchor (non e-commerce) -->
       <section id="buy" class="mc-section mc-section--dark mc-section--padded mc-section--border-top">
         <div class="mc-section-inner mc-section-inner--split mc-buy-inner">
@@ -220,7 +206,6 @@
     </footer>
 
     <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
