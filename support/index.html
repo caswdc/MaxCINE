@@ -127,8 +127,31 @@
   <h3 style="margin-bottom:16px;">告诉我们你遇到的问题，我们会协助你找到最合适的服务或维修方案。</h3>
 
   <!-- ⭐ 主按钮（放最明显） -->
-  <a id="repair-link" class="download-btn primary-btn" target="_blank" style="pointer-events:none; opacity:0.5;">
-    🔧 开始使用自助寄修服务
+ <form action="https://formspree.io/f/mqegyqbo" method="POST" class="mc-card" style="margin-top:20px;">
+
+  <h3 style="margin-bottom:16px;">提交维修申请</h3>
+
+  <!-- SN -->
+  <input name="sn" id="form-sn" placeholder="序列号" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+
+  <!-- 联系方式 -->
+  <input name="contact" placeholder="联系方式（微信 / 邮箱 / 电话）" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+
+  <!-- 问题 -->
+  <textarea name="issue" placeholder="请描述遇到的问题" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;"></textarea>
+
+  <!-- 防垃圾 -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <!-- 提交按钮 -->
+  <button type="submit" class="mc-btn" style="width:100%;">
+    提交维修申请
+  </button>
+
+</form>
   </a>
 
   <!-- 分割 -->
@@ -180,6 +203,8 @@ btn.onclick = async () => {
 
     const data = await res.json();
 
+    document.getElementById("form-sn").value = sn;
+
     // 产品名
     name.textContent = data.version;
 
@@ -197,12 +222,6 @@ btn.onclick = async () => {
     } else {
       img.src = "../assets/products/default.png";
     }
-
-    // ===== 寄修 =====
-    const repair = document.getElementById("repair-link");
-    repair.href = "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__6qx3slUNzRSVDJUQUk0VUFYUThHWEpETEJVU1dIMS4u";
-    repair.style.pointerEvents = "auto";
-    repair.style.opacity = "1";
 
     // ===== WhatsApp =====
     const phone = "6593537378"; // 必须纯数字
