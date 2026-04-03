@@ -29,5 +29,5 @@ Then open `http://localhost:3000` (or the port shown in the terminal).
   - Brand Philosophy
   - Support
   - Non-commerce “Where to buy” info
-  - Compact footer with region selector.，
+  - Compact footer with region selector.
 
