@@ -127,28 +127,67 @@
   <h3 style="margin-bottom:16px;">告诉我们你遇到的问题，我们会协助你找到最合适的服务或维修方案。</h3>
 
   <!-- ⭐ 主按钮（放最明显） -->
- <form action="https://formspree.io/f/mqegyqbo" method="POST" class="mc-card" style="margin-top:20px;">
+<form action="https://formspree.io/f/mqegyqbo" method="POST" class="mc-card" style="margin-top:20px;">
 
-  <h3 style="margin-bottom:16px;">提交维修申请</h3>
+  <h3 style="margin-bottom:16px;">
+    请填写以下自助寄修服务登记，以便我们的支持团队您提供最合适的解决方案
+  </h3>
+
+  <!-- 称呼 -->
+  <input name="name" placeholder="我们该如何称呼您？" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
 
   <!-- SN -->
-  <input name="sn" id="form-sn" placeholder="序列号" required
+  <input name="sn" id="form-sn" placeholder="您的产品序列号" required
     style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+
+  <!-- 购买渠道 -->
+  <select name="channel" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+    
+    <option value="">请选择购买渠道</option>
+    <option>MaxCINE官方旗舰店</option>
+    <option>极致工作室官方旗舰店</option>
+    <option>MaxCINE聚影官方旗舰店</option>
+    <option>MaxCINE新加坡官方自营店</option>
+    <option>MaxCINE-臻品工作室授权专营店</option>
+    <option>MaxCINE新风影像授权专营店</option>
+    <option>MaxCINE天枢科技淘宝授权专营店</option>
+    <option>MaxCINE-不知名飞手授权专营店</option>
+    <option>MaxCINE-Forever授权专营店</option>
+    <option>其他非官方授权渠道</option>
+  </select>
+
+  <!-- 购买日期 -->
+  <input type="date" name="buy_date" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+
+  <!-- 故障问题 -->
+  <textarea name="issue" placeholder="产品故障问题（请尽量详细描述）" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;"></textarea>
+
+  <!-- 故障时间 -->
+  <input type="date" name="issue_date" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+
+  <!-- 寄回地址 -->
+  <textarea name="address" placeholder="您的寄回地址" required
+    style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;"></textarea>
 
   <!-- 联系方式 -->
-  <input name="contact" placeholder="联系方式（微信 / 邮箱 / 电话）" required
+  <input name="contact" placeholder="您的联系方式（微信，电话与邮箱）（我们的支持团队将通过企业微信或者邮件与您沟通服务方案）" required
     style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
 
-  <!-- 问题 -->
-  <textarea name="issue" placeholder="请描述遇到的问题" required
+  <!-- 备注 -->
+  <textarea name="remark" placeholder="备注（可选）"
     style="width:100%; padding:12px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;"></textarea>
 
   <!-- 防垃圾 -->
   <input type="text" name="_gotcha" style="display:none">
 
-  <!-- 提交按钮 -->
+  <!-- 提交 -->
   <button type="submit" class="mc-btn" style="width:100%;">
-    提交维修申请
+    提交自助寄修服务申请
   </button>
 
 </form>
