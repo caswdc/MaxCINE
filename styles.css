@@ -141,7 +141,7 @@ button {
 .mc-hero-media {
   position: absolute;
   inset: 0;
-  background-image: url("assets/firstpage.jpg");
+  background-image: url("/MaxCINE/assets/firstpage.jpg");
   background-position: center center;
   background-size: cover;
   filter: saturate(1) contrast(1.05);
