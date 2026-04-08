@@ -5,39 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>产品下载中心 - MaxCINE</title>
 
-  <!-- ✅ 关键：引入你的全局样式 -->
   <link rel="stylesheet" href="../styles.css">
-<style>
-body {
-  background: #f5f5f5;
-  color: #111;
-}
 
-/* 卡片 */
-.dl-card,
-.dl-item {
-  background: #fff;
-  border: 1px solid #eee;
-}
+  <style>
+  body {
+    background: #f5f5f5;
+    color: #111;
+  }
 
-/* 输入框 */
-.dl-input-group input {
-  background: #fff;
-  color: #111;
-  border: 1px solid #ddd;
-}
+  /* 卡片 */
+  .dl-card,
+  .dl-item {
+    background: #fff;
+    border: 1px solid #eee;
+  }
 
-/* 下载按钮 */
-.dl-item a {
-  background: #111;
-  color: #fff;
-}
-</style>
+  /* 输入框 */
+  .dl-input-group input {
+    background: #fff;
+    color: #111;
+    border: 1px solid #ddd;
+  }
+
+  /* ✅ 修复按钮（重点） */
+  .dl-input-group button {
+    background: #111 !important;
+    color: #fff !important;
+    border-radius: 10px;
+  }
+
+  .dl-input-group button:hover {
+    opacity: 0.85;
+  }
+
+  /* 下载按钮 */
+  .dl-item a {
+    background: #111;
+    color: #fff;
+  }
+
+  /* 产品信息 */
+  #product img {
+    width: 120px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  #product h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  </style>
+
 </head>
 
 <body>
 
-<!-- ✅ Header（和主站统一） -->
 <header class="mc-header">
   <div class="mc-header-inner">
     <a href="/" class="mc-logo">
@@ -46,18 +72,14 @@ body {
   </div>
 </header>
 
-<!-- 主体 -->
 <div class="dl-wrap">
 
-  <!-- 标题 -->
   <div class="dl-hero">
     <h1>资源下载</h1>
     <p>输入设备序列号以解锁专属资源</p>
   </div>
 
-  <!-- 验证卡片 -->
   <div class="dl-card">
-
     <h3>设备验证</h3>
     <div class="dl-sub">请输入序列号</div>
 
@@ -65,11 +87,15 @@ body {
       <input id="sn-input" placeholder="SN CODE">
       <button id="sn-btn">验证</button>
     </div>
-
   </div>
 
-  <!-- 下载内容 -->
+  <!-- ✅ 产品信息 -->
   <div id="content" class="dl-content">
+
+    <div id="product" style="text-align:center; margin-bottom:40px;">
+      <img id="img">
+      <h2 id="name"></h2>
+    </div>
 
     <div class="dl-grid">
 
@@ -99,6 +125,9 @@ const btn = document.getElementById("sn-btn");
 const input = document.getElementById("sn-input");
 const content = document.getElementById("content");
 
+const img = document.getElementById("img");
+const name = document.getElementById("name");
+
 btn.onclick = async () => {
 
   const sn = input.value.trim();
@@ -117,7 +146,14 @@ btn.onclick = async () => {
 
     const data = await res.json();
 
-    // 成功动画
+    // ✅ 显示产品信息
+    name.textContent = data.version;
+    img.src = "../assets/products/" + data.image;
+
+    img.onerror = () => {
+      img.src = "../assets/products/default.png";
+    };
+
     btn.innerText = "✔ 已验证";
 
     setTimeout(() => {
