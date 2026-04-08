@@ -5,193 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>产品下载中心 - MaxCINE</title>
 
-  <style>
-    body {
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-      background:#f5f5f5;
-      color:#111;
-    }
-
-    .mc-header {
-      background:#fff;
-      border-bottom:1px solid #eee;
-      height:60px;
-      display:flex;
-      align-items:center;
-      padding:0 20px;
-    }
-
-    .mc-left {
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .mc-logo {
-      height:24px;
-    }
-
-    .mc-nav-text {
-      font-size:18px;
-      font-weight:500;
-      color:#222;
-    }
-
-    .mc-container {
-      max-width:900px;
-      margin:0 auto;
-      padding:60px 20px;
-      text-align:center;
-    }
-
-    h1 {
-      font-size:28px;
-      margin-bottom:10px;
-    }
-
-    .mc-desc {
-      color:#666;
-      margin-bottom:30px;
-      font-size:14px;
-    }
-
-    .mc-search {
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      margin-bottom:20px;
-    }
-
-    .mc-input {
-      padding:12px;
-      width:280px;
-      border:1px solid #ddd;
-      border-radius:8px;
-      font-size:14px;
-    }
-
-    .mc-input:focus {
-      outline:none;
-      border-color:#000;
-      box-shadow:0 0 0 3px rgba(0,0,0,0.08);
-    }
-
-    .mc-btn {
-      padding:12px 20px;
-      border:none;
-      background:#111;
-      color:#fff;
-      border-radius:8px;
-      cursor:pointer;
-    }
-
-    #loading {
-      display:none;
-      margin-top:20px;
-    }
-
-    .mc-loader {
-      width:32px;
-      height:32px;
-      border:3px solid #ddd;
-      border-top:3px solid #111;
-      border-radius:50%;
-      margin:0 auto;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .mc-main {
-      display:none;
-      margin-top:20px;
-    }
-
-    .mc-img {
-      width:140px;
-      height:140px;
-      margin:20px auto;
-      object-fit:contain;
-      background:#fff;
-      border-radius:12px;
-      border:1px solid #eee;
-    }
-
-    .mc-card {
-      background:white;
-      margin-top:30px;
-      padding:24px;
-      border-radius:12px;
-      text-align:left;
-    }
-
-    .download-btn {
-      display:block;
-      padding:12px;
-      margin-top:12px;
-      background:#111;
-      color:#fff;
-      border-radius:8px;
-      text-decoration:none;
-      text-align:center;
-    }
-
-    .download-btn:hover {
-      opacity:0.85;
-    }
-  </style>
+  <!-- ✅ 关键：引入你的全局样式 -->
+  <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
 
-<!-- Header -->
-<div class="mc-header">
-  <div class="mc-left">
-    <img src="../assets/logo2.png" class="mc-logo">
-    <div class="mc-nav-text">产品下载中心</div>
+<!-- ✅ Header（和主站统一） -->
+<header class="mc-header">
+  <div class="mc-header-inner">
+    <a href="/" class="mc-logo">
+      <img src="../assets/logo2.png">
+    </a>
   </div>
-</div>
+</header>
 
-<div class="mc-container">
+<!-- 主体 -->
+<div class="dl-wrap">
 
-  <h1>资源下载</h1>
-  <div class="mc-desc">输入设备序列号以解锁专属资源</div>
-
-  <!-- 输入 -->
-  <div class="mc-search">
-    <input id="sn-input" class="mc-input" placeholder="请输入序列号">
-    <button id="sn-btn" class="mc-btn">验证</button>
-  </div>
-
-  <!-- loading -->
-  <div id="loading">
-    <div class="mc-loader"></div>
+  <!-- 标题 -->
+  <div class="dl-hero">
+    <h1>资源下载</h1>
+    <p>输入设备序列号以解锁专属资源</p>
   </div>
 
-  <!-- 结果 -->
-  <div id="main" class="mc-main">
+  <!-- 验证卡片 -->
+  <div class="dl-card">
 
-    <img id="img" class="mc-img">
-    <h2 id="name"></h2>
+    <h3>设备验证</h3>
+    <div class="dl-sub">请输入序列号</div>
 
-    <div class="mc-card">
+    <div class="dl-input-group">
+      <input id="sn-input" placeholder="SN CODE">
+      <button id="sn-btn">验证</button>
+    </div>
 
-      <p>该设备已通过验证，可下载专属资源</p>
+  </div>
 
-      <a href="./ps/maxcine_ps_v1.zip" class="download-btn" download>
-        Photoshop CameraRaw 预设
-      </a>
+  <!-- 下载内容 -->
+  <div id="content" class="dl-content">
 
-      <a href="./ps/maxcine_lr_v1.zip" class="download-btn" download>
-        Lightroom 预设
-      </a>
+    <div class="dl-grid">
 
-      <a href="./ps/maxcine_davinci_v1.zip" class="download-btn" download>
-        DaVinci DRX 文件
-      </a>
+      <div class="dl-item">
+        <h4>Photoshop CameraRaw</h4>
+        <a href="./ps/maxcine_ps_v1.zip" download>下载</a>
+      </div>
+
+      <div class="dl-item">
+        <h4>Lightroom</h4>
+        <a href="./ps/maxcine_lr_v1.zip" download>下载</a>
+      </div>
+
+      <div class="dl-item">
+        <h4>DaVinci DRX</h4>
+        <a href="./ps/maxcine_davinci_v1.zip" download>下载</a>
+      </div>
 
     </div>
 
@@ -202,13 +71,7 @@
 <script>
 const btn = document.getElementById("sn-btn");
 const input = document.getElementById("sn-input");
-const loading = document.getElementById("loading");
-const main = document.getElementById("main");
-
-const img = document.getElementById("img");
-const name = document.getElementById("name");
-
-main.style.display = "none";
+const content = document.getElementById("content");
 
 btn.onclick = async () => {
 
@@ -219,8 +82,7 @@ btn.onclick = async () => {
     return;
   }
 
-  loading.style.display = "block";
-  main.style.display = "none";
+  btn.innerText = "验证中...";
 
   try {
     const res = await fetch("../data/" + sn + ".json?t=" + Date.now());
@@ -229,21 +91,18 @@ btn.onclick = async () => {
 
     const data = await res.json();
 
-    name.textContent = data.version;
+    // 成功动画
+    btn.innerText = "✔ 已验证";
 
-    // ✅ 修复图片路径
-    img.src = "../assets/products/" + data.image;
-
-    img.onerror = () => {
-      img.src = "../assets/products/default.png";
-    };
-
-    loading.style.display = "none";
-    main.style.display = "block";
+    setTimeout(() => {
+      content.style.display = "block";
+    }, 300);
 
   } catch {
-    loading.style.display = "none";
-    alert("序列号无效");
+    btn.innerText = "验证失败";
+    setTimeout(() => {
+      btn.innerText = "验证";
+    }, 1500);
   }
 };
 </script>
