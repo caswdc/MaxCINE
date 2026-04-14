@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>产品下载中心 - MaxCINE</title>
 
   <style>
@@ -13,7 +13,6 @@
       color:#111;
     }
 
-    /* Header */
     .mc-header {
       background:#fff;
       border-bottom:1px solid #eee;
@@ -39,10 +38,8 @@
       height:24px;
       display:flex;
       align-items:center;
-      color:#222;
     }
 
-    /* Main */
     .mc-container {
       max-width:900px;
       margin:0 auto;
@@ -61,7 +58,6 @@
       font-size:14px;
     }
 
-    /* 输入 */
     .mc-search {
       display:flex;
       justify-content:center;
@@ -74,13 +70,6 @@
       width:280px;
       border:1px solid #ddd;
       border-radius:8px;
-      font-size:14px;
-    }
-
-    .mc-input:focus {
-      outline:none;
-      border-color:#000;
-      box-shadow:0 0 0 3px rgba(0,0,0,0.08);
     }
 
     .mc-btn {
@@ -92,27 +81,6 @@
       cursor:pointer;
     }
 
-    /* loading */
-    #loading {
-      display:none;
-      margin-top:20px;
-    }
-
-    .mc-loader {
-      width:32px;
-      height:32px;
-      border:3px solid #ddd;
-      border-top:3px solid #111;
-      border-radius:50%;
-      margin:0 auto;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* 结果 */
     .mc-main {
       display:none;
       margin-top:20px;
@@ -120,12 +88,8 @@
 
     .mc-img {
       width:140px;
-      height:140px;
       margin:20px auto;
       object-fit:contain;
-      background:#fff;
-      border-radius:12px;
-      border:1px solid #eee;
     }
 
     .mc-card {
@@ -143,19 +107,14 @@
       background:#111;
       color:#fff;
       border-radius:8px;
-      text-decoration:none;
       text-align:center;
-    }
-
-    .download-btn:hover {
-      opacity:0.85;
+      text-decoration:none;
     }
   </style>
 </head>
 
 <body>
 
-<!-- Header -->
 <div class="mc-header">
   <div class="mc-left">
     <img src="../assets/logo2.png" class="mc-logo">
@@ -166,44 +125,24 @@
 <div class="mc-container">
 
   <h1>资源下载</h1>
-  <div class="mc-desc">输入设备序列号以解锁专属资源</div>
+  <div class="mc-desc">输入设备序列号以解锁对应产品资源</div>
 
-  <!-- 输入 -->
   <div class="mc-search">
     <input id="sn-input" class="mc-input" placeholder="请输入序列号">
     <button id="sn-btn" class="mc-btn">验证</button>
   </div>
 
-  <!-- loading -->
-  <div id="loading">
-    <div class="mc-loader"></div>
-  </div>
-
-  <!-- 结果 -->
   <div id="main" class="mc-main">
-
     <img id="img" class="mc-img">
-
     <h2 id="name"></h2>
 
     <div class="mc-card">
-
       <p>该设备已通过验证，可下载专属资源</p>
 
-      <a href="assets/downloads/ps/maxcine_ps_v1.zip" class="download-btn" download>
-        Photoshop 调色资源
-      </a>
-
-      <a href="assets/downloads/lr/maxcine_lr_v1.xmp" class="download-btn" download>
-        Lightroom 预设
-      </a>
-
-      <a href="assets/downloads/davinci/maxcine_davinci_v1.cube" class="download-btn" download>
-        DaVinci LUT
-      </a>
-
+      <a href="./ps/maxcine_ps_v1.zip" class="download-btn" download>Photoshop CameraRaw</a>
+      <a href="./ps/maxcine_lr_v1.zip" class="download-btn" download>Lightroom</a>
+      <a href="./ps/maxcine_davinci_v1.zip" class="download-btn" download>DaVinci DRX</a>
     </div>
-
   </div>
 
 </div>
@@ -211,13 +150,10 @@
 <script>
 const btn = document.getElementById("sn-btn");
 const input = document.getElementById("sn-input");
-const loading = document.getElementById("loading");
 const main = document.getElementById("main");
 
 const img = document.getElementById("img");
 const name = document.getElementById("name");
-
-main.style.display = "none";
 
 btn.onclick = async () => {
 
@@ -228,8 +164,7 @@ btn.onclick = async () => {
     return;
   }
 
-  loading.style.display = "block";
-  main.style.display = "none";
+  btn.innerText = "验证中...";
 
   try {
     const res = await fetch("../data/" + sn + ".json?t=" + Date.now());
@@ -239,20 +174,19 @@ btn.onclick = async () => {
     const data = await res.json();
 
     name.textContent = data.version;
+    img.src = "../assets/products/" + data.image;
 
-    // ⭐ 正确图片路径
-    img.src = "assets/products/" + data.image;
+    btn.innerText = "✔ 已验证";
 
-    img.onerror = () => {
-      img.src = "assets/products/default.png";
-    };
-
-    loading.style.display = "none";
-    main.style.display = "block";
+    setTimeout(() => {
+      main.style.display = "block";
+    }, 300);
 
   } catch {
-    loading.style.display = "none";
-    alert("序列号无效");
+    btn.innerText = "验证失败";
+    setTimeout(() => {
+      btn.innerText = "验证";
+    }, 1500);
   }
 };
 </script>

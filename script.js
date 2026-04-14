@@ -106,4 +106,33 @@ window.addEventListener("DOMContentLoaded", () => {
   initHeaderVisibility();
   initSupportActions();
   initSmoothScroll();
-});
+})
+function checkStatus(){
+
+  const sn = document.getElementById("sn").value.trim();
+  const result = document.getElementById("result");
+
+  if(!sn){
+    alert("请输入序列号");
+    return;
+  }
+
+  result.innerHTML = "正在查询...";
+
+  fetch("../data/activate/" + sn + ".json?t=" + Date.now())
+    .then(res => {
+
+      if(res.ok){
+        return res.json().then(data => {
+
+          // ⭐ 直接显示已激活卡片
+          showCard(data, true);
+        });
+      }
+
+      throw new Error();
+    })
+    .catch(()=>{
+      result.innerHTML = "❌ 未查询到激活记录";
+    });
+}
