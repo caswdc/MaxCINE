@@ -416,8 +416,13 @@ html[lang="en"] .mc-hero-kicker {
 /* Support Grid */
 .mc-support-grid {
   display: grid;
+<<<<<<< HEAD
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
+=======
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+>>>>>>> a7c8aa8818a2320bbbd45152988876b55343a1b0
 }
 
 .mc-support-card {
@@ -1163,3 +1168,10 @@ input::placeholder {
   color:#111 !important;
   border:1px solid #ddd !important;
 }
+<<<<<<< HEAD
+=======
+.mc-input:focus {
+  background:#fff !important;
+  color:#111 !important;
+}
+>>>>>>> a7c8aa8818a2320bbbd45152988876b55343a1b0
