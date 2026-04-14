@@ -76,7 +76,7 @@ async function query(sn){
 
     document.getElementById("name").innerText = data.version;
     document.getElementById("sn").innerText = `序列号：${sn}`;
-    document.getElementById("date").innerText = `激活时间：${data.buy_date}`;
+    document.getElementById("date").innerText = `购买日期：${data.buy_date}`;
 
     document.getElementById("start").innerText = data.start_date;
     document.getElementById("end").innerText = data.end_date;
